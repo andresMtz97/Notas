@@ -11,6 +11,7 @@ class AddNoteViewController: UIViewController {
     
     @IBOutlet weak var noteTitle: UITextField!
     @IBOutlet weak var noteContent: UITextView!
+    @IBOutlet weak var saveBtn: UIBarButtonItem!
     
     var notesManager = NotesManager.shared
     
@@ -19,12 +20,18 @@ class AddNoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        noteContent.delegate = self
+        noteContent.text = "Note content"
+        noteContent.textColor = .lightGray
+        
 
         // Do any additional setup after loading the view.
         if let position = notePosition {
             note = notesManager.getNote(at: position)
             noteTitle.text = note?.title
             noteContent.text = note?.content
+            if !(note?.content ?? "").isEmpty { noteContent.textColor = .label }
         }
     }
     
@@ -37,7 +44,11 @@ class AddNoteViewController: UIViewController {
             note = Note(title: noteTitle.text ?? "", content: noteContent.text, date: Date())
         } else {
             note?.title = noteTitle.text ?? ""
-            note?.content = noteContent.text ?? ""
+            if noteContent.text == nil || noteContent.text == "Note Content" {
+                note?.content = ""
+            } else {
+                note?.content = noteContent.text
+            }
             destination.notePosition = notePosition
         }
         
@@ -46,7 +57,18 @@ class AddNoteViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // Validate note info
-        return true
+        let title = noteTitle.text ?? ""
+        let content = noteContent.text ?? ""
+        
+        if !title.isEmpty && !content.isEmpty && content != "Note Content" {
+            return true
+        }
+        
+        let alert = UIAlertController(title: "Error", message: "Title and Note content are required.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+        
+        return false
     }
 
     @IBAction func cancelBtnTapped(_ sender: UIBarButtonItem) {
@@ -55,6 +77,23 @@ class AddNoteViewController: UIViewController {
             self.dismiss(animated: true)
         } else {
             navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+extension AddNoteViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .lightGray {
+            textView.text = nil
+            textView.textColor = .label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Note Content"
+            textView.textColor = .lightGray
         }
     }
 }

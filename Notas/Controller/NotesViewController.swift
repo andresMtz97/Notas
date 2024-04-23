@@ -51,6 +51,28 @@ class NotesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "noteDetailSegue", sender: self)
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        print(indexPath.row)
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete: ", indexPath.row)
+            notesManager.deleteNote(at: indexPath.row)
+            notesManager.saveNotes()
+            notesList.reloadData()
+            
+            if notesManager.countNotes() == 0 {
+                emptyNotesView.isHidden = false
+            }
+        }
+    }
 
     @IBAction func unwindToNotesViewController(_ segue: UIStoryboardSegue) {
         print("Unwind seque")
