@@ -22,6 +22,7 @@
 		86CC1F192BD4353E007D7420 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC1F182BD4353E007D7420 /* DateExtension.swift */; };
 		86CC1F1B2BD437AF007D7420 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC1F1A2BD437AF007D7420 /* ViewExtension.swift */; };
 		86CC1F1D2BD438CC007D7420 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC1F1C2BD438CC007D7420 /* CGColorExtension.swift */; };
+		86CC1F262BD87DD6007D7420 /* AddNoteViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC1F252BD87DD5007D7420 /* AddNoteViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		86CC1F182BD4353E007D7420 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		86CC1F1A2BD437AF007D7420 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		86CC1F1C2BD438CC007D7420 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
+		86CC1F252BD87DD5007D7420 /* AddNoteViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				86CC1F182BD4353E007D7420 /* DateExtension.swift */,
 				86CC1F1A2BD437AF007D7420 /* ViewExtension.swift */,
 				86CC1F1C2BD438CC007D7420 /* CGColorExtension.swift */,
+				86CC1F252BD87DD5007D7420 /* AddNoteViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				86CC1F1B2BD437AF007D7420 /* ViewExtension.swift in Sources */,
 				86CC1F1D2BD438CC007D7420 /* CGColorExtension.swift in Sources */,
 				86CC1F0A2BD35074007D7420 /* Note.swift in Sources */,
+				86CC1F262BD87DD6007D7420 /* AddNoteViewControllerExtension.swift in Sources */,
 				86CC1EF42BD34F7F007D7420 /* AppDelegate.swift in Sources */,
 				86CC1EF62BD34F7F007D7420 /* SceneDelegate.swift in Sources */,
 				86CC1F142BD4233A007D7420 /* NoteCell.swift in Sources */,

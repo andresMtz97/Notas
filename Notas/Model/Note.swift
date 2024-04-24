@@ -11,4 +11,6 @@ struct Note: Codable {
     var title: String
     var content: String
     var date: Date
+    var font: String
+    var color: [CGFloat]
 }

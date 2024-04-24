@@ -37,11 +37,14 @@ class NotesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NoteCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NoteCell
         let note = notesManager.getNote(at: indexPath.row)
-        cell?.title.text = note.title
-        cell?.date.text = note.date.iso8601String
-        return cell!
+        cell.title.text = note.title
+        cell.title.font = UIFont(name: note.font, size: 17.0)
+        cell.date.text = note.date.iso8601String
+        cell.date.font = UIFont(name: note.font, size: 14.0)
+        cell.backgroundColor = UIColor(red: note.color[0], green: note.color[1], blue: note.color[2], alpha: note.color[3])
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
