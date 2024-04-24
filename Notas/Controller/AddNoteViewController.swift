@@ -111,6 +111,5 @@ class AddNoteViewController: UIViewController {
     
     @objc func colorChanged(){
         currentColor = (color.selectedColor?.cgColor.components!)!
-        print(currentColor)
     }
 }

@@ -60,13 +60,11 @@ class NotesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        print(indexPath.row)
         return .delete
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("delete: ", indexPath.row)
             notesManager.deleteNote(at: indexPath.row)
             notesManager.saveNotes()
             notesList.reloadData()
@@ -78,7 +76,6 @@ class NotesViewController: UITableViewController {
     }
 
     @IBAction func unwindToNotesViewController(_ segue: UIStoryboardSegue) {
-        print("Unwind seque")
         let source = segue.source as! AddNoteViewController
         note = source.note
         
@@ -90,7 +87,6 @@ class NotesViewController: UITableViewController {
         
         if (notesManager.countNotes() > 0) { emptyNotesView.isHidden = true }
         
-        print("#N: ", notesManager.countNotes())
         notesManager.saveNotes()
         //reload table view
         notesList.reloadData()
